@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    void sortIt(vector<int>& arr) {
+        int oddsCount = 0, n = arr.size();
+        for(int i = 0; i < n; i++) {
+            if (arr[i] % 2 != 0) oddsCount++;
+        }
+        int ptr = oddsCount;
+        while (ptr < n && arr[ptr] % 2 == 0) ptr++;
+        for(int i = 0; ptr < n && i < oddsCount; i++) {
+            if (arr[i] % 2 == 0) {
+                swap(arr[i], arr[ptr]);
+                while(ptr < n && arr[ptr] % 2 == 0) ptr++;
+            }
+        }
+        sort(arr.begin(), arr.begin() + oddsCount, greater<int>());
+        sort(arr.begin() + oddsCount, arr.end());
+    }
+};
