@@ -1,0 +1,10 @@
+class Solution {
+  public:
+    int countEdges(vector<vector<int>> &adj) {
+        int total = 0;
+        for (auto &list : adj) {
+            total += list.size();
+        }
+        return total / 2;
+    }
+};
